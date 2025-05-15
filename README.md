@@ -1,3 +1,21 @@
+# ORR Docker
+
+This is a fork of OpenRailRouting designed to be used as a Docker container.
+
+To build the routing engine :
+
+```cmd
+docker compose build --no-cache
+docker compose up -d
+```
+
+If an OSM extract is present in the $OSM_FILE path, the engine will use it.
+Otherwise, it will download the extract given by PBF_URL, France by default.
+
+---
+
+Original README :
+
 # OpenStreetMap based routing on railway tracks
 
 This is a prototype of a routing engine for railways based on a forked version of the

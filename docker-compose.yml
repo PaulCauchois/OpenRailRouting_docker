@@ -1,0 +1,17 @@
+services:
+  openrailrouting:
+    build: .
+    image: openrailrouting:latest
+    container_name: openrailrouting
+    environment:
+      JAVA_OPTS: "-Xmx4g -Xms512m"
+      PBF_URL: https://download.geofabrik.de/europe/france-latest.osm.pbf
+      OSM_FILE: /data/map.osm.pbf              # leave as-is unless you prefer another name/path
+      ORR_ACTION: serve
+      ORR_PORT: 8989
+    volumes:
+      - ./graph-cache:/opt/openrailrouting/graph-cache
+      - ./data:/data                          # will be created automatically and hold the .pbf
+      - ./config.yml:/opt/openrailrouting/config.yml:ro
+    ports:
+      - "8989:8989"
